@@ -6,7 +6,7 @@ Add this to your code:
 app.run(['$http', '$document', function($http, $document) {
   $document.ready(function() {
     HTTPong.initialize();
-    return HTTPong.getScheme('contentdish').setApiUrl('/api/v1');
+    HTTPong.getScheme('animal-farm').setApiUrl('/api/v1');
   });
   return HTTPong.setHttpFunction($http);
 }]);
