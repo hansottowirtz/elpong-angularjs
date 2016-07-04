@@ -8,7 +8,7 @@ app.run(['$http', '$document', function($http, $document) {
     HTTPong.initialize();
     HTTPong.getScheme('animal-farm').setApiUrl('/api/v1');
   });
-  return HTTPong.setHttpFunction($http);
+  HTTPong.setHttpFunction($http);
 }]);
 ```
 
