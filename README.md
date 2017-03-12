@@ -6,7 +6,7 @@ Add this to your code:
 
 ```javascript
 app.config([function(){
-  Elpong.enableAutoload()
+  Elpong.enableAutoload(); // when using preloading
 }]);
 app.run(['$http', function($http){
   Elpong.setAjax($http);
@@ -22,6 +22,8 @@ app.factory('Elpong', ['$window', function($window){
   return $window.Elpong;
 }]);
 app.factory('Scheme', ['Elpong', function(Elpong){
-  return Elpong.get('animal-farm');
+  var scheme = Elpong.get('animal-farm');
+  scheme.setApiUrl('/api');
+  return scheme;
 }]);
 ```
