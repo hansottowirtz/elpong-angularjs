@@ -1,21 +1,27 @@
-# HTTPong for AngularJS
+# Elpong for AngularJS
+
+There is no need for a separate angularjs module, as support for `$http` is built-in.
 
 Add this to your code:
 
 ```javascript
-app.run(['$http', '$document', function($http, $document) {
-  $document.ready(function() {
-    HTTPong.initialize();
-    HTTPong.getScheme('animal-farm').setApiUrl('/api/v1');
-  });
-  HTTPong.setHttpFunction($http);
+app.config([function(){
+  Elpong.enableAutoload()
+}]);
+app.run(['$http', function($http){
+  Elpong.setAjax($http);
 }]);
 ```
 
-Then just use HTTPong in your controller, or create a factory that returns your scheme.
+Make sure your preloaded meta tags come before the script that loads angularjs.
+
+Then just use Elpong in your controller, or create a factory that returns your scheme.
 
 ```javascript
-app.factory('Scheme', [function(){
-  return HTTPong.getScheme('animal-farm');
+app.factory('Elpong', ['$window', function($window){
+  return $window.Elpong;
+}]);
+app.factory('Scheme', ['Elpong', function(Elpong){
+  return Elpong.get('animal-farm');
 }]);
 ```
